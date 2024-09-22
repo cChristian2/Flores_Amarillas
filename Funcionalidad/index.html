@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="../Estilo/estilo.css" rel="stylesheet">
+    <title>Cartinha</title>
+    <link rel="stylesheet" href="../Estilo/estilo2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <style>
-        .back-button {
+        /* Estilos adicionales para el botón */
+        .next-button {
             position: absolute;
             top: 2rem;
-            right: 1rem; /* Cambia esto si quieres mover el botón */
+            left: 1rem; /* Cambiado a la izquierda */
             padding: 10px 20px;
             background-color: #f9f9f9;
             border: 2px solid #967b5c;
@@ -17,185 +19,42 @@
             font-size: 1.2rem;
             border-radius: 5px;
             cursor: pointer;
-            z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+            z-index: 1000; /* Asegúrate de que esté por encima del sobre */
         }
-        .back-button:hover {
+        .next-button:hover {
             background-color: #e2e2e2;
         }
     </style>
 </head>
-<body class="not-loaded">
-    <button class="back-button" onclick="window.history.back();">Regresar</button>
-    <div class="night"></div>
-    <div class="flowers">
-        <div class="flower flower--1">
-            <div class="flower__leafs flower__leafs--1">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-                <div class="flower__light flower__light--1"></div>
-                <div class="flower__light flower__light--2"></div>
-                <div class="flower__light flower__light--3"></div>
-                <div class="flower__light flower__light--4"></div>
-                <div class="flower__light flower__light--5"></div>
-                <div class="flower__light flower__light--6"></div>
-                <div class="flower__light flower__light--7"></div>
-                <div class="flower__light flower__light--8"></div>
-            </div>
-            <div class="flower__line">
-                <div class="flower__line__leaf flower__line__leaf--1"></div>
-                <div class="flower__line__leaf flower__line__leaf--2"></div>
-                <div class="flower__line__leaf flower__line__leaf--3"></div>
-                <div class="flower__line__leaf flower__line__leaf--4"></div>
-                <div class="flower__line__leaf flower__line__leaf--5"></div>
-                <div class="flower__line__leaf flower__line__leaf--6"></div>
-            </div>
-        </div>
-        <div class="flower flower--2">
-            <div class="flower__leafs flower__leafs--2">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-                <div class="flower__light flower__light--1"></div>
-                <div class="flower__light flower__light--2"></div>
-                <div class="flower__light flower__light--3"></div>
-                <div class="flower__light flower__light--4"></div>
-                <div class="flower__light flower__light--5"></div>
-                <div class="flower__light flower__light--6"></div>
-                <div class="flower__light flower__light--7"></div>
-                <div class="flower__light flower__light--8"></div>
-            </div>
-            <div class="flower__line">
-                <div class="flower__line__leaf flower__line__leaf--1"></div>
-                <div class="flower__line__leaf flower__line__leaf--2"></div>
-                <div class="flower__line__leaf flower__line__leaf--3"></div>
-                <div class="flower__line__leaf flower__line__leaf--4"></div>
-            </div>
-        </div>
-        <div class="flower flower--3">
-            <div class="flower__leafs flower__leafs--3">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-                <div class="flower__light flower__light--1"></div>
-                <div class="flower__light flower__light--2"></div>
-                <div class="flower__light flower__light--3"></div>
-                <div class="flower__light flower__light--4"></div>
-                <div class="flower__light flower__light--5"></div>
-                <div class="flower__light flower__light--6"></div>
-                <div class="flower__light flower__light--7"></div>
-                <div class="flower__light flower__light--8"></div>
-            </div>
-            <div class="flower__line">
-                <div class="flower__line__leaf flower__line__leaf--1"></div>
-                <div class="flower__line__leaf flower__line__leaf--2"></div>
-                <div class="flower__line__leaf flower__line__leaf--3"></div>
-                <div class="flower__line__leaf flower__line__leaf--4"></div>
-            </div>
-        </div>
-        <div class="grow-ans" style="--d:1.2s">
-            <div class="flower__g-long">
-                <div class="flower__g-long__top"></div>
-                <div class="flower__g-long__bottom"></div>
-            </div>
-        </div>
-        <div class="growing-grass">
-            <div class="flower__grass flower__grass--1">
-                <div class="flower__grass--top"></div>
-                <div class="flower__grass--bottom"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--1"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--2"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--3"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--4"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--5"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--6"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--7"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--8"></div>
-                <div class="flower__grass__overlay"></div>
-            </div>
-        </div>
-        <div class="growing-grass">
-            <div class="flower__grass flower__grass--2">
-                <div class="flower__grass--top"></div>
-                <div class="flower__grass--bottom"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--1"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--2"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--3"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--4"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--5"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--6"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--7"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--8"></div>
-                <div class="flower__grass__overlay"></div>
-            </div>
-        </div>
-        <div class="grow-ans" style="--d:2.4s">
-            <div class="flower__g-right flower__g-right--1">
-                <div class="leaf"></div>
-            </div>
-        </div>
-        <div class="grow-ans" style="--d:2.8s">
-            <div class="flower__g-right flower__g-right--2">
-                <div class="leaf"></div>
-            </div>
-        </div>
-        <div class="grow-ans" style="--d:2.8s">
-            <div class="flower__g-front">
-                <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1">
-                    <div class="flower__g-front__leaf"></div>
+<body class="scissors">
+    <button class="next-button" onclick="location.href='../Funcionalidad/inicio.html';">Siguiente</button> <!-- Cambia 'outra_pagina.html' por el nombre de tu página -->
+    <div class="envelop">
+        <div class="envelop__front-paper"></div>
+        <div class="envelop__back-paper"></div>
+        <div class="envelop__up-paper js-up-paper"></div>
+        <div class="envelop__sticker js-sticker"></div>
+        <div class="envelop__false-sticker"></div>
+        <div class="envelop__content js-envelop-content">
+            <div class="love-notes">
+                <div class="note js-note">
+                    <div class="note__text">
+                        <p>Oii minha princesa, aqui estamos completando mais um mês juntos, é sempre uma alegria poder acordar e saber que tenho você ao meu lado e sentir que isso será para sempre é magnífico</p>
+                    </div>
                 </div>
-                <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2">
-                    <div class="flower__g-front__leaf"></div>
+                <div class="note js-note">
+                    <div class="note__text">
+                        <p>quero que eles nunca acabem e que tenham sempre muitos outros pela frente.</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="grow-ans" style="--d:1.2s">
-            <div class="flower__g-long">
-                <div class="flower__g-long__top"></div>
-                <div class="flower__g-long__bottom"></div>
-            </div>
-        </div>
-        <div class="grow-ans" style="--d:2.4s">
-            <div class="flower__g-right flower__g-right--1">
-                <div class="leaf"></div>
-            </div>
-        </div>
-        <div class="grow-ans" style="--d:2.8s">
-            <div class="flower__g-right flower__g-right--2">
-                <div class="leaf"></div>
-            </div>
-        </div>
-        <div class="grow-ans" style="--d:2.8s">
-            <div class="flower__g-front">
-                <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1">
-                    <div class="flower__g-front__leaf"></div>
+                <div class="note js-note">
+                    <div class="note__text">
+                        <p>você é a melhor coisa que me aconteceu, obrigado por me escolher todos os dias.</p>
+                        <p>Te amo muito! &hearts;.</p>
+                    </div>
                 </div>
-                <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2">
-                    <div class="flower__g-front__leaf"></div>
-                </div>
-            </div>
-        </div>
-        <div class="growing-grass">
-            <div class="flower__grass flower__grass--3">
-                <div class="flower__grass--top"></div>
-                <div class="flower__grass--bottom"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--1"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--2"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--3"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--4"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--5"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--6"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--7"></div>
-                <div class="flower__grass__leaf flower__grass__leaf--8"></div>
-                <div class="flower__grass__overlay"></div>
             </div>
         </div>
     </div>
+    <script src="../Funcionalidad/sesion.js"></script>
 </body>
 </html>
